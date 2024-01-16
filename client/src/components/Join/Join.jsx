@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import io from "socket.io-client";
 import style from "./Join.module.css";
-import Typist from "react-typist";
 
 import { Input, Button } from "@mui/material";
 
