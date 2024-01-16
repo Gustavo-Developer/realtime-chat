@@ -1,0 +1,57 @@
+.join-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  animation: fadeIn 1s ease-in-out;
+}
+
+h2 {
+  font-family: "Roboto Mono", monospace;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #61dafb;
+  animation: slideIn 1s ease-in-out;
+}
+
+button {
+  font-family: "Source Code Pro", monospace;
+  background-color: #61dafb;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #4fa3d1;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Animacoes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

@@ -1,25 +1,44 @@
 import React, { useRef } from "react";
-
 import io from "socket.io-client";
+import style from "./Join.module.css";
+import Typist from "react-typist";
 
-export default function Join({ setChatVisibility }) {
-  const usenameRef = useRef();
+import { Input, Button } from "@mui/material";
+
+export default function Join({ setChatVisibility, setSocket }) {
+  const usernameRef = useRef();
+
   const handleSubmit = async () => {
-    const username = usenameRef.current.value;
-
+    const username = usernameRef.current.value;
     if (!username.trim()) return;
-
     const socket = await io.connect("http://localhost:3001");
     socket.emit("set_username", username);
-
+    setSocket(socket);
     setChatVisibility(true);
   };
 
   return (
-    <div>
-      <h1>Join</h1>
-      <input type="text" ref={usenameRef} placeholder="Nome do usuário" />
-      <button onClick={() => handleSubmit()}>Entrar</button>
+    <div className={style["join-container"]}>
+      <h2>Chat em tempo real</h2>
+      <Input
+        sx={{
+          fontFamily: "Inconsolata",
+          padding: "10px",
+          marginBottom: "15px",
+          width: "100%",
+          border: "1px solid #61dafb",
+          borderRadius: "5px",
+          outline: "none",
+          color: "#fff",
+          transition: "border-color 0.3s ease-in-out",
+        }}
+        inputRef={usernameRef}
+        variant="outlined"
+        placeholder="Nome de usuário"
+      />
+      <button sx={{ mt: 2 }} onClick={() => handleSubmit()} variant="contained">
+        Entrar
+      </button>
     </div>
   );
 }

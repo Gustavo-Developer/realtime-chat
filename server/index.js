@@ -19,6 +19,14 @@ io.on("connection", (socket) => {
     socket.data.username = username;
     console.log(socket.data.username);
   });
+
+  socket.on("message", (text) => {
+    io.emit("receive_message", {
+      text,
+      authorId: socket.id,
+      author: socket.data.username,
+    });
+  });
 });
 
 server.listen(PORT, () => console.log("🚀 Server Running"));

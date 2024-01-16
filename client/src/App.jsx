@@ -6,13 +6,15 @@ import { useState } from "react";
 
 function App() {
   const [chatVisibility, setChatVisibility] = useState(false);
+  const [socket, setSocket] = useState(null);
+
   return (
     <>
       <div className="App">
         {chatVisibility ? (
-          <Chat />
+          <Chat socket={socket} />
         ) : (
-          <Join setChatVisibility={setChatVisibility} />
+          <Join setSocket={setSocket} setChatVisibility={setChatVisibility} />
         )}
       </div>
     </>
