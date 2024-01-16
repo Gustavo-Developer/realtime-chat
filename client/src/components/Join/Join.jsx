@@ -10,6 +10,8 @@ export default function Join({ setChatVisibility }) {
     if (!username.trim()) return;
 
     const socket = await io.connect("http://localhost:3001");
+    socket.emit("set_username", username);
+
     setChatVisibility(true);
   };
 

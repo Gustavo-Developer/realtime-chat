@@ -10,6 +10,15 @@ const PORT = 3001;
 
 io.on("connection", (socket) => {
   console.log("Usuário conectado", socket.id);
+
+  socket.on("disconnect", (reason) => {
+    console.log("Usuário desconectado", socket.id);
+  });
+
+  socket.on("set_username", (username) => {
+    socket.data.username = username;
+    console.log(socket.data.username);
+  });
 });
 
 server.listen(PORT, () => console.log("🚀 Server Running"));
