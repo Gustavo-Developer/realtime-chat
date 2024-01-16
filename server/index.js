@@ -8,4 +8,8 @@ const io = require("socket.io")(server, {
 
 const PORT = 3001;
 
+io.on("connection", (socket) => {
+  console.log("Usuário conectado", socket.id);
+});
+
 server.listen(PORT, () => console.log("🚀 Server Running"));
